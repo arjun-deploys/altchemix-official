@@ -251,15 +251,22 @@ function ProductCard({
             className="relative z-10"
           >
             <Button
+              type="button"
               variant="ghost"
               className="w-full group/btn justify-between hover:bg-teal/10"
             >
               <span>View Details</span>
+
               <motion.div
                 animate={{ x: isHovered ? 5 : 0 }}
                 transition={{ duration: 0.2 }}
+                aria-hidden="true"
               >
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight
+                  className="w-4 h-4"
+                  aria-hidden="true"
+                  focusable="false"
+                />
               </motion.div>
             </Button>
           </motion.div>
@@ -376,10 +383,18 @@ function CustomSolutionsCard({ product }: { product: (typeof products)[0] }) {
             animate={{ y: isHovered ? 0 : 5, opacity: isHovered ? 1 : 0.8 }}
             transition={{ duration: 0.2 }}
           >
-            <Button variant="teal" className="group/btn">
-              Start Project
-              <motion.span animate={{ x: isHovered ? 3 : 0 }}>
-                <ArrowRight className="ml-2 w-4 h-4" />
+            <Button type="button" variant="teal" className="group/btn">
+              <span>Start Project</span>
+
+              <motion.span
+                animate={{ x: isHovered ? 3 : 0 }}
+                aria-hidden="true"
+              >
+                <ArrowRight
+                  className="ml-2 w-4 h-4"
+                  aria-hidden="true"
+                  focusable="false"
+                />
               </motion.span>
             </Button>
           </motion.div>

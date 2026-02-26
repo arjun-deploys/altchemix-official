@@ -436,3 +436,15 @@
 canvas {
   filter: blur(0.4px) contrast(110%);
 }
+
+/* ================= Hero Parallax ================= */
+
+.hero-parallax {
+  transform: translate3d(0, var(--hero-parallax, 0px), 0);
+  will-change: transform;
+}
+
+.hero-text-parallax {
+  transform: translate3d(0, calc(var(--hero-parallax, 0px) * -0.4), 0);
+  will-change: transform;
+}

@@ -90,23 +90,33 @@ export function Navbar() {
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
               <Button
+                type="button"
                 variant="ghost"
                 size="sm"
                 className={!isScrolled ? "text-white hover:bg-white/10" : ""}
               >
-                Resources
+                <span>Resources</span>
               </Button>
-              <Button variant="hero" size="default">
-                Contact Sales
+
+              <Button type="button" variant="hero" size="default">
+                <span>Contact Sales</span>
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
+              type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`lg:hidden p-2 ${iconColor}`}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? (
+                <X size={24} aria-hidden="true" focusable="false" />
+              ) : (
+                <Menu size={24} aria-hidden="true" focusable="false" />
+              )}
             </button>
           </nav>
         </div>
@@ -133,11 +143,16 @@ export function Navbar() {
                   </a>
                 ))}
                 <div className="pt-4 border-t border-border space-y-3">
-                  <Button variant="heroOutline" className="w-full">
-                    Resources
+                  <Button
+                    type="button"
+                    variant="heroOutline"
+                    className="w-full"
+                  >
+                    <span>Resources</span>
                   </Button>
-                  <Button variant="hero" className="w-full">
-                    Contact Sales
+
+                  <Button type="button" variant="hero" className="w-full">
+                    <span>Contact Sales</span>
                   </Button>
                 </div>
               </div>

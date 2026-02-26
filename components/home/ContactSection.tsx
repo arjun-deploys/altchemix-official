@@ -1,42 +1,42 @@
-'use client';
+"use client";
 
-import { useState, useRef } from 'react';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { Send, MapPin, Mail, ReceiptIndianRupee } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState, useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { Send, MapPin, Mail, ReceiptIndianRupee } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const industries = [
-  'Packaging',
-  'Pipes & Agriculture',
-  'Wire & Cable',
-  'Fibres & Textiles',
-  'Healthcare',
-  'Appliances',
-  'Custom OEM',
-  'Other',
+  "Packaging",
+  "Pipes & Agriculture",
+  "Wire & Cable",
+  "Fibres & Textiles",
+  "Healthcare",
+  "Appliances",
+  "Custom OEM",
+  "Other",
 ];
 
 const products = [
-  'Colour Masterbatch',
-  'White Masterbatch',
-  'Black Masterbatch',
-  'Additive Masterbatch',
-  'Custom Solutions',
+  "Colour Masterbatch",
+  "White Masterbatch",
+  "Black Masterbatch",
+  "Additive Masterbatch",
+  "Custom Solutions",
 ];
 
 export function ContactSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const shouldReduceMotion = useReducedMotion();
 
   const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    email: '',
-    phone: '',
-    industry: '',
-    product: '',
-    message: '',
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    industry: "",
+    product: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -45,13 +45,13 @@ export function ContactSection() {
     // TODO: connect API endpoint here
 
     setFormData({
-      name: '',
-      company: '',
-      email: '',
-      phone: '',
-      industry: '',
-      product: '',
-      message: '',
+      name: "",
+      company: "",
+      email: "",
+      phone: "",
+      industry: "",
+      product: "",
+      message: "",
     });
   };
 
@@ -68,20 +68,20 @@ export function ContactSection() {
 
   return (
     <section
-      id='contact'
-      role='region'
-      aria-labelledby='contact-heading'
-      className='py-32 relative overflow-hidden'
+      id="contact"
+      role="region"
+      aria-labelledby="contact-heading"
+      className="py-32 relative overflow-hidden"
     >
       {/* Background */}
-      <div className='absolute inset-0 bg-muted/30' aria-hidden='true' />
+      <div className="absolute inset-0 bg-muted/30" aria-hidden="true" />
       <div
-        className='absolute inset-0 grid-overlay opacity-30'
-        aria-hidden='true'
+        className="absolute inset-0 grid-overlay opacity-30"
+        aria-hidden="true"
       />
 
-      <div className='page_container mx-auto px-6 lg:px-12 relative z-10'>
-        <div className='grid lg:grid-cols-2 gap-16'>
+      <div className="page_container mx-auto px-6 lg:px-12 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Left Info */}
           <motion.div
             ref={ref}
@@ -89,73 +89,73 @@ export function ContactSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5 }}
           >
-            <span className='inline-block text-sm font-semibold text-teal uppercase tracking-widest mb-4'>
+            <span className="inline-block text-sm font-semibold text-teal uppercase tracking-widest mb-4">
               Get in Touch
             </span>
 
             <h2
-              id='contact-heading'
-              className='text-4xl md:text-5xl font-bold text-foreground mb-6'
+              id="contact-heading"
+              className="text-4xl md:text-5xl font-bold text-foreground mb-6"
             >
               Let's Discuss Your Project
             </h2>
 
-            <p className='text-lg text-muted-foreground mb-12'>
+            <p className="text-lg text-muted-foreground mb-12">
               Whether you need custom color matching, additive solutions, or
               technical consultation, our team is ready to help you achieve
               optimal results.
             </p>
 
             {/* Contact Info */}
-            <div className='space-y-6'>
-              <div className='flex items-start gap-4'>
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
                 <div
-                  className='w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center shrink-0'
-                  aria-hidden='true'
+                  className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center shrink-0"
+                  aria-hidden="true"
                 >
-                  <MapPin className='w-6 h-6 text-teal' />
+                  <MapPin className="w-6 h-6 text-teal" />
                 </div>
-                <address className='not-italic'>
-                  <h4 className='font-semibold text-foreground mb-1'>
+                <address className="not-italic">
+                  <h4 className="font-semibold text-foreground mb-1">
                     ALTCHEMIX MATERIALS LLP
                   </h4>
-                  <p className='text-muted-foreground'>
+                  <p className="text-muted-foreground">
                     Plot No. PAP V-72/1/2, Wauli MIDC Chakan Phase 2 <br />
                     Chakan Police Station, Khed, Pune
                   </p>
                 </address>
               </div>
 
-              <div className='flex items-start gap-4'>
+              <div className="flex items-start gap-4">
                 <div
-                  className='w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center shrink-0'
-                  aria-hidden='true'
+                  className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center shrink-0"
+                  aria-hidden="true"
                 >
-                  <Mail className='w-6 h-6 text-teal' />
+                  <Mail className="w-6 h-6 text-teal" />
                 </div>
                 <div>
-                  <h4 className='font-semibold text-foreground mb-1'>Email</h4>
+                  <h4 className="font-semibold text-foreground mb-1">Email</h4>
                   <a
-                    href='mailto:info@altchemix.com'
-                    className='text-muted-foreground hover:text-teal transition-colors'
+                    href="mailto:info@altchemix.com"
+                    className="text-muted-foreground hover:text-teal transition-colors"
                   >
                     info@altchemix.com
                   </a>
                 </div>
               </div>
 
-              <div className='flex items-start gap-4'>
+              <div className="flex items-start gap-4">
                 <div
-                  className='w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center shrink-0'
-                  aria-hidden='true'
+                  className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center shrink-0"
+                  aria-hidden="true"
                 >
-                  <ReceiptIndianRupee className='w-6 h-6 text-teal' />
+                  <ReceiptIndianRupee className="w-6 h-6 text-teal" />
                 </div>
                 <div>
-                  <h4 className='font-semibold text-foreground mb-1'>
+                  <h4 className="font-semibold text-foreground mb-1">
                     GSTIN/UIN
                   </h4>
-                  <p className='text-muted-foreground'>27ACKFA2023M1ZE</p>
+                  <p className="text-muted-foreground">27ACKFA2023M1ZE</p>
                 </div>
               </div>
             </div>
@@ -169,62 +169,62 @@ export function ContactSection() {
           >
             <form
               onSubmit={handleSubmit}
-              className='glass-card rounded-2xl p-8 lg:p-10 shadow-card'
+              className="glass-card rounded-2xl p-8 lg:p-10 shadow-card"
               noValidate
             >
-              <fieldset className='space-y-6'>
-                <legend className='sr-only'>Contact Form</legend>
+              <fieldset className="space-y-6">
+                <legend className="sr-only">Contact Form</legend>
 
-                <div className='grid md:grid-cols-2 gap-6'>
+                <div className="grid md:grid-cols-2 gap-6">
                   <InputField
-                    label='Full Name'
-                    name='name'
+                    label="Full Name"
+                    name="name"
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder='John Smith'
+                    placeholder="John Smith"
                   />
                   <InputField
-                    label='Company'
-                    name='company'
+                    label="Company"
+                    name="company"
                     required
                     value={formData.company}
                     onChange={handleChange}
-                    placeholder='Acme Plastics Inc.'
+                    placeholder="Acme Plastics Inc."
                   />
                 </div>
 
-                <div className='grid md:grid-cols-2 gap-6'>
+                <div className="grid md:grid-cols-2 gap-6">
                   <InputField
-                    label='Email'
-                    name='email'
-                    type='email'
+                    label="Email"
+                    name="email"
+                    type="email"
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder='john@acme.com'
+                    placeholder="john@acme.com"
                   />
                   <InputField
-                    label='Phone'
-                    name='phone'
-                    type='tel'
+                    label="Phone"
+                    name="phone"
+                    type="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder='+1 234 567 8900'
+                    placeholder="+1 234 567 8900"
                   />
                 </div>
 
-                <div className='grid md:grid-cols-2 gap-6'>
+                <div className="grid md:grid-cols-2 gap-6">
                   <SelectField
-                    label='Industry'
-                    name='industry'
+                    label="Industry"
+                    name="industry"
                     value={formData.industry}
                     onChange={handleChange}
                     options={industries}
                   />
                   <SelectField
-                    label='Product Interest'
-                    name='product'
+                    label="Product Interest"
+                    name="product"
                     value={formData.product}
                     onChange={handleChange}
                     options={products}
@@ -233,34 +233,35 @@ export function ContactSection() {
 
                 <div>
                   <label
-                    htmlFor='message'
-                    className='block text-sm font-medium text-foreground mb-2'
+                    htmlFor="message"
+                    className="block text-sm font-medium text-foreground mb-2"
                   >
                     Message
                   </label>
                   <textarea
-                    id='message'
-                    name='message'
+                    id="message"
+                    name="message"
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    className='w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors resize-none text-foreground'
-                    placeholder='Tell us about your project requirements...'
+                    className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors resize-none text-foreground"
+                    placeholder="Tell us about your project requirements..."
                   />
                 </div>
               </fieldset>
 
               <Button
-                type='submit'
-                variant='hero'
-                size='xl'
-                className='w-full group mt-8'
-                aria-label='Submit contact inquiry'
+                type="submit"
+                variant="hero"
+                size="xl"
+                className="w-full group mt-8"
               >
-                Submit Inquiry
+                <span>Submit Inquiry</span>
+
                 <Send
-                  className='ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform'
-                  aria-hidden='true'
+                  className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  aria-hidden="true"
+                  focusable="false"
                 />
               </Button>
             </form>
@@ -276,7 +277,7 @@ export function ContactSection() {
 function InputField({
   label,
   name,
-  type = 'text',
+  type = "text",
   required = false,
   value,
   onChange,
@@ -286,9 +287,9 @@ function InputField({
     <div>
       <label
         htmlFor={name}
-        className='block text-sm font-medium text-foreground mb-2'
+        className="block text-sm font-medium text-foreground mb-2"
       >
-        {label} {required && '*'}
+        {label} {required && "*"}
       </label>
       <input
         id={name}
@@ -298,7 +299,7 @@ function InputField({
         onChange={onChange}
         required={required}
         autoComplete={name}
-        className='w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors text-foreground'
+        className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors text-foreground"
         placeholder={placeholder}
       />
     </div>
@@ -310,7 +311,7 @@ function SelectField({ label, name, value, onChange, options }: any) {
     <div>
       <label
         htmlFor={name}
-        className='block text-sm font-medium text-foreground mb-2'
+        className="block text-sm font-medium text-foreground mb-2"
       >
         {label}
       </label>
@@ -319,9 +320,9 @@ function SelectField({ label, name, value, onChange, options }: any) {
         name={name}
         value={value}
         onChange={onChange}
-        className='w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors text-foreground'
+        className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-teal focus:ring-1 focus:ring-teal outline-none transition-colors text-foreground"
       >
-        <option value=''>Select {label}</option>
+        <option value="">Select {label}</option>
         {options.map((opt: string) => (
           <option key={opt} value={opt}>
             {opt}

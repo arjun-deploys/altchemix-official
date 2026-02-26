@@ -209,15 +209,18 @@ export const AboutSection = memo(function AboutSection() {
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-10">
-              <Link href="/about">
-                <Button variant="hero" size="xl" className="group">
-                  Know More
+              <Button asChild variant="hero" size="xl" className="group">
+                <Link href="/about" aria-label="Know more about our company">
+                  <span>Know More</span>
+
                   <ArrowRight
+                    aria-hidden="true"
+                    focusable="false"
                     className="ml-2 group-hover:translate-x-2 transition-transform duration-300"
                     size={18}
                   />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </motion.div>
           </div>
 
