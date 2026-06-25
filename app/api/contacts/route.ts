@@ -12,6 +12,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // CREATE
 export async function POST(req: Request) {
   try {
+    await dbConnect();
     const body = await req.json();
     const { name, company, email, phone, industry, product, message } = body;
 
@@ -30,7 +31,7 @@ export async function POST(req: Request) {
     await Promise.all([
       // Admin notification
       resend.emails.send({
-        from: "onboarding@resend.dev", 
+        from: "onboarding@resend.dev",
         to: "info@altchemix.com",
         subject: `🚀 New Enquiry — ${name} from ${company}`,
         html: AdminNotificationEmail({
@@ -46,7 +47,7 @@ export async function POST(req: Request) {
       }),
       // Customer thank-you
       resend.emails.send({
-        from: "info@altchemix.com", 
+        from: "info@altchemix.com",
         to: email,
         subject: `We've received your enquiry ✔ — Altchemix`,
         html: ThankYouEmail({
