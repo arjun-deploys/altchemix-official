@@ -68,6 +68,6 @@ export async function POST(req: Request) {
 export async function GET() {
   return NextResponse.json({
     success: true,
-    message: "Register API is working",
+    message: "Register API is working, but not implemented yet",
   });
 }

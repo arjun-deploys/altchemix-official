@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     console.log("🕒 Time:", new Date().toISOString());
     console.log("=================================");
 
-    console.log("📡 Connecting to database...");
+    console.log("📡 Connecting to database");
     await dbConnect();
     console.log("✅ Database connected");
 
