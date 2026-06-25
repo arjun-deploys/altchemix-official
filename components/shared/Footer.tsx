@@ -7,8 +7,8 @@ import Link from "next/link";
 const footerLinks = {
   company: [
     { label: "About Us", href: "#about" },
-    { label: "Careers", href: "#" },
-    { label: "News & Updates", href: "#" },
+    { label: "Careers", href: "/careers" },
+    { label: "News & Updates", href: "/news" },
     { label: "Sustainability", href: "#" },
   ],
   products: [
