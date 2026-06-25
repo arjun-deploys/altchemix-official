@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import BrandLogo from "@/components/shared/BrandLogo";
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -51,32 +53,12 @@ export default function AdminLogin() {
       <div className="relative w-full max-w-sm">
         {/* Brand */}
         <div className="mb-10 text-center">
-          <div className="inline-flex items-center gap-2.5 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center">
-              <svg
-                className="w-4 h-4 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.5}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-            </div>
-            <span className="text-white font-semibold text-lg tracking-tight">
-              Nexus
-            </span>
-          </div>
-          <h1 className="text-2xl font-semibold text-white tracking-tight">
-            Welcome back
-          </h1>
-          <p className="text-sm text-zinc-500 mt-1.5">
-            Sign in to your admin panel
-          </p>
+          <Link
+            href="/admin/login"
+            className="flex items-center justify-center gap-3 "
+          >
+            <BrandLogo variant={"light"} />
+          </Link>
         </div>
 
         {/* Card */}

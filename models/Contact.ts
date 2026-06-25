@@ -9,8 +9,14 @@ const ContactSchema = new mongoose.Schema(
     industry: String,
     product: String,
     message: String,
+    status: {
+      type: String,
+      enum: ["new", "contacted", "qualified", "converted", "lost"],
+      default: "new",
+    },
+    notes: String,
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 export default mongoose.models.Contact ||

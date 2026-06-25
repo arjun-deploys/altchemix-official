@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import BrandLogo from "./BrandLogo";
+import Link from "next/link";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -58,14 +59,9 @@ export function Navbar() {
         <div className="page_container mx-auto px-6 lg:px-12">
           <nav className="flex items-center justify-between h-20">
             {/* Logo */}
-            <motion.a
-              href="#"
-              className="flex items-center gap-3"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400 }}
-            >
+            <Link href="/" className="flex items-center gap-3">
               <BrandLogo variant={isScrolled ? "dark" : "light"} />
-            </motion.a>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
@@ -133,14 +129,14 @@ export function Navbar() {
             >
               <div className="page_container mx-auto px-6 py-6 space-y-4">
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.label}
                     href={item.href}
                     className="block py-2 text-foreground font-medium"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
                 <div className="pt-4 border-t border-border space-y-3">
                   <Button
@@ -151,9 +147,11 @@ export function Navbar() {
                     <span>Resources</span>
                   </Button>
 
-                  <Button type="button" variant="hero" className="w-full">
-                    <span>Contact Sales</span>
-                  </Button>
+                  <Link href={"#contact"}>
+                    <Button type="button" variant="hero" className="w-full">
+                      <span>Contact Sales</span>
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
