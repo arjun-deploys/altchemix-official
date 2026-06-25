@@ -14,9 +14,9 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
     optimizePackageImports: ["lucide-react"],
   },
-  compiler: {
-    removeConsole: true,
-  },
+  // compiler: {
+  //   removeConsole: true,
+  // },
 };
 
 export default nextConfig;
