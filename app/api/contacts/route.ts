@@ -4,80 +4,66 @@ import Contact from "@/models/Contact";
 import { Resend } from "resend";
 import { AdminNotificationEmail } from "@/lib/emails/AdminNotificationEmail";
 import { ThankYouEmail } from "@/lib/emails/ThankYouEmail";
+import Admin from "@/models/Admin";
 
 export const runtime = "nodejs";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
-// CREATE
-// export async function POST(req: Request) {
-//   try {
-//     await dbConnect();
-//     const body = await req.json();
-//     const { name, company, email, phone, industry, product, message } = body;
-
-//     const receivedAt = new Date().toLocaleString("en-IN", {
-//       day: "2-digit",
-//       month: "long",
-//       year: "numeric",
-//       hour: "2-digit",
-//       minute: "2-digit",
-//       hour12: true,
-//       timeZone: "Asia/Kolkata",
-//     });
-
-//     await Contact.create(body);
-
-//     await Promise.all([
-//       // Admin notification
-//       resend.emails.send({
-//         from: "onboarding@resend.dev",
-//         to: "info@altchemix.com",
-//         subject: `🚀 New Enquiry — ${name} from ${company}`,
-//         html: AdminNotificationEmail({
-//           name,
-//           company,
-//           email,
-//           phone,
-//           industry,
-//           product,
-//           message,
-//           receivedAt,
-//         }),
-//       }),
-//       // Customer thank-you
-//       resend.emails.send({
-//         from: "info@altchemix.com",
-//         to: email,
-//         subject: `We've received your enquiry ✔ — Altchemix`,
-//         html: ThankYouEmail({
-//           name,
-//           company,
-//           email,
-//           phone,
-//           industry,
-//           product,
-//           message,
-//         }),
-//       }),
-//     ]);
-
-//     return NextResponse.json({ success: true });
-//   } catch (error) {
-//     console.error("[contact] email error:", error);
-//     return NextResponse.json(
-//       { error: "Failed to send email" },
-//       { status: 500 },
-//     );
-//   }
-// }
 
 export async function POST(req: Request) {
   try {
     await dbConnect();
     const body = await req.json();
 
+    const { name, company, email, phone, industry, product, message } = body;
+
+    const receivedAt = new Date().toLocaleString("en-IN", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+      timeZone: "Asia/Kolkata",
+    });
+
     const contact = await Contact.create(body);
+
+    const admin = await Admin.findOne({ username: "admin" });
+
+    await Promise.all([
+      // Admin notification
+      resend.emails.send({
+        from: "onboarding@resend.dev",
+        to: admin.emailNotification,
+        subject: `🚀 New Enquiry — ${name} from ${company}`,
+        html: AdminNotificationEmail({
+          name,
+          company,
+          email,
+          phone,
+          industry,
+          product,
+          message,
+          receivedAt,
+        }),
+      }),
+      // Customer thank-you
+      resend.emails.send({
+        from: "info@altchemix.com",
+        to: email,
+        subject: `We've received your enquiry ✔ — Altchemix`,
+        html: ThankYouEmail({
+          name,
+          company,
+          email,
+          phone,
+          industry,
+          product,
+          message,
+        }),
+      }),
+    ]);
 
     return NextResponse.json({ success: true, contact });
   } catch (error) {

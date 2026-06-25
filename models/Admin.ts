@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const AdminSchema = new mongoose.Schema(
   {
     name: String,
+    emailNotification:String,
     username: {
       type: String,
       required: true,

@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   try {
     await dbConnect();
 
-    const { username, password, name } = await req.json();
+    const { username, password, name, emailNotification } = await req.json();
 
     // Validation
     if (!username || !password) {
@@ -37,6 +37,7 @@ export async function POST(req: Request) {
       username,
       password,
       name,
+      emailNotification,
     });
 
     return NextResponse.json(
@@ -47,6 +48,7 @@ export async function POST(req: Request) {
           id: admin._id,
           username: admin.username,
           name: admin.name,
+          emailNotification: admin.emailNotification,
         },
       },
       { status: 201 },
